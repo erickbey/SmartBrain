@@ -1,0 +1,5 @@
+.Tilt {
+    background: linear-gradient(89deg, rgba(255, 94, 223, 0.35) 0%, rgba(4, 200, 222, 0.45) 100%);
+    backdrop-filter: blur(5.6px);
+    -webkit-backdrop-filter: blur(5.6px);
+}
