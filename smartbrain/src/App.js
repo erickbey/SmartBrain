@@ -189,11 +189,19 @@ function App() {
         ? <div>
             <Logo />
             <Rank name={userProfile.name} entries={userProfile.entries} />
+            
+            <div className='examples'>
+              <h3>Copy and paste a link below, or input your link!</h3>
+              <p>https://i0.wp.com/www.thebasketballnetwork.com/wp-content/uploads/2018/05/USATSI_10853818.jpg?fit=5683%2C3789&ssl=1</p>
+              <p>https://tooathletic.com/wp-content/uploads/2020/04/IMG_3801-800x622.jpg</p>
+              <p>https://images3.alphacoders.com/102/thumb-1920-1021724.jpg</p>
+            </div>
+
             <ImageLinkForm 
               onInputChange={onInputChange} 
               onSubmit={onSubmit}/>
             <FaceRecognition boxCoordinates={boxCoordinates} imageUrl={imageUrl} />
-            </div>
+          </div>
         : ( route === 'signin'
         ? <SignIn onRouteChange={onRouteChange} loadUser={loadUser} />
         : <Register onRouteChange={onRouteChange} loadUser={loadUser} />
