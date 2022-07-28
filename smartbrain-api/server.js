@@ -49,7 +49,12 @@ app.put('/image', (req, res) => {image.handleImageEntry(req, res, knex)})
 // calls the clarifai api to use the face recognition software
 app.post('/imageUrl', (req, res) => {image.handleClarifaiApiCall(req, res)})
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../smartbrain/build'))
+  console.log('success')
+}
 
-app.listen(3000, () => {
-    console.log(`app is running on port 3000`);
+const PORT = process.env.PORT || 8000
+app.listen(PORT, () => {
+    console.log(`app is running on port ${PORT}`);
 })
