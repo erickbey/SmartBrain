@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
+const compression = require('compression');
 require('dotenv').config();
 
 const register = require('./controllers/register');
 const signIn = require('./controllers/signIn');
 const image = require('./controllers/image');
+const compression = require('compression');
 
 const databasePassword = process.env.DATABASE_PASSWORD;
 const knex = require('knex')({
@@ -25,6 +27,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(compression());
 
 
 app.get('/', (req, res) => {
@@ -51,7 +54,6 @@ app.post('/imageUrl', (req, res) => {image.handleClarifaiApiCall(req, res)})
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('../smartbrain/build'))
-  console.log('success')
 }
 
 const PORT = process.env.PORT || 8000
